@@ -1,6 +1,5 @@
-# Firefox extension with a few vi(m) keybindings.
+# Firefox extension with a few vim keybindings.
 
-* [Install](https://addons.mozilla.org/en-US/firefox/addon/vimkeybindings/)
 * [Source on Github](https://github.com/autonome/vimkeybindings)
 
 ## Supported Commands
@@ -10,12 +9,13 @@
 * k : scroll up
 * l : scroll right
 * gg : go to the top of the page
-* G (shift-g) : go to the bottom of the page
+* GG : go to the bottom of the page
 * gt : go to the next tab
 * gT : go to the previous tab
 * {n}gt : go to the nth tab
 
 Commands can be repeated as in vim. Example: 50j will scroll down 50 lines.
+Also inputs can be aborted using the escape key (or any other non command key).
 
 ## Credits
 
@@ -23,4 +23,10 @@ Commands can be repeated as in vim. Example: 50j will scroll down 50 lines.
 * Packaged by Arno, a commenter there
 * Updated and repackaged by me on AMO
 * Documented by Christopher Svec
-* Rewritten from scratch with the WebExtensions API for Firefox 53 and after (and a few before) by me
+* Rewritten from scratch with the WebExtensions API for Firefox 53 and after (and a few before) by Dietrich Ayala (https://github.com/autonome/vimkeybindings)
+* Adopted by me
+
+## TODO add command
+* :Fi : open new tab
+## TODO tab commands don't work on empty tabs
+
