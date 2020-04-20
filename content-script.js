@@ -12,9 +12,7 @@ const actions = [
   { keyCombination: 'gg', command: 'cmd_scrollFileTop' },
   { keyCombination: 'gt', command: 'cmd_activateNextTab' },
   { keyCombination: 'gT', command: 'cmd_activatePreviousTab' },
-  /*
-  {keyCombination: 'Fi:', command: 'cmd_activateNewTab'},
-  */
+  { keyCombination: ':Fi', command: 'cmd_activateNewTab'}
 ];
 
 const commands = {
@@ -53,11 +51,17 @@ const commands = {
       }
     });
   },
-  cmd_activatePreviousTab: function (repetition) {
+  cmd_activatePreviousTab: function() {
     browser.runtime.sendMessage({
       message: {
         command: 'activatePreviousTab',
-        repetition,
+      }
+    });
+  },
+  cmd_activateNewTab: function() {
+    browser.runtime.sendMessage({
+      message: {
+        command: 'activateNewTab',
       }
     });
   }
@@ -99,33 +103,37 @@ function runAction(action) {
   resetHistory();
 }
 
-document.addEventListener("keyup", event => {
-  //Check if a number key is pressed (for repetition)
+document.addEventListener("keydown", event => {
+  // Ignore Shift key bc keypress event is deprecated
+  if (event.key === "Shift")
+    return;
+
+  // Check if a number key is pressed (for repetition)
   if (numbers.includes(event.key)) {
     repetition += event.key;
     return;
   }
 
-  //If a non-command key is pressed, bail
+  // If a non-command key is pressed, bail
   if (!validKeys.has(event.key)) {
     resetHistory();
     return;
   }
 
-  //Store the key
+  // Store the key
   keyCombination += event.key;
 
-  // see if the key combination matches one of our vim command combinations
+  // See if the key combination matches one of our vim command combinations
   const action = actions.find(value => value.keyCombination == keyCombination);
-  
-  // bail if not supported action
+
+  // Bail if not supported action
   if (!action) {
-    //If the combination length is reached the max length, there are no possible actions left.
+    // If the combination length is reached the max length, there are no possible actions left.
     if (keyCombination.length == maxCombinationLength) resetHistory();
     return;
   };
 
-  // bail if in contenteditable elements, textareas, inputs, etc
+  // Bail if in contenteditable elements, textareas, inputs, etc
   const contentEditable = event.target.getAttribute('contenteditable');
   const formElements = ['input', 'textarea', 'select'];
   const isFormElement = formElements.indexOf(event.target.tagName.toLowerCase()) != -1;
@@ -134,7 +142,7 @@ document.addEventListener("keyup", event => {
     resetHistory();
     return;
   };
-
+ 
   runAction(action);
 }, false);
 

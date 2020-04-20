@@ -4,18 +4,19 @@
 
 ## Supported Commands
 
-* h : scroll left
-* j : scroll down
-* k : scroll up
-* l : scroll right
-* gg : go to the top of the page
-* GG : go to the bottom of the page
-* gt : go to the next tab
-* gT : go to the previous tab
-* {n}gt : go to the nth tab
+* h     : scroll left
+* j     : scroll down
+* k     : scroll up
+* l     : scroll right
+* gg    : go to the top of the page
+* GG    : go to the bottom of the page
+* gt    : go to the next tab
+* gT    : go to the previous tab
+* {n}gt : go to the n-th tab
+* :Fi   : open new tab at position n+1
 
 Commands can be repeated as in vim. Example: 50j will scroll down 50 lines.
-Also inputs can be aborted using the escape key (or any other non command key).
+Also inputs can be aborted using the escape key (or any other non-command key).
 
 ## Credits
 
@@ -26,7 +27,5 @@ Also inputs can be aborted using the escape key (or any other non command key).
 * Rewritten from scratch with the WebExtensions API for Firefox 53 and after (and a few before) by Dietrich Ayala (https://github.com/autonome/vimkeybindings)
 * Adopted by me
 
-## TODO add command
-* :Fi : open new tab
-## TODO tab commands don't work on empty tabs
+## TODO event listener doesn't work on blank tabs
 
