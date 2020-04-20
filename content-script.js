@@ -8,14 +8,12 @@ const actions = [
   { keyCombination: 'j', command: 'cmd_scrollLineDown' },
   { keyCombination: 'k', command: 'cmd_scrollLineUp' },
   { keyCombination: 'l', command: 'cmd_scrollRight' },
-  { keyCombination: 'G', command: 'cmd_scrollFileBottom' },
+  { keyCombination: 'GG', command: 'cmd_scrollFileBottom' },
   { keyCombination: 'gg', command: 'cmd_scrollFileTop' },
   { keyCombination: 'gt', command: 'cmd_activateNextTab' },
   { keyCombination: 'gT', command: 'cmd_activatePreviousTab' },
   /*
-  {keyCombination: 'H', command: 'cmd_scrollScreenTop'},
-  {keyCombination: 'M', command: 'cmd_scrollScreenMiddle'},
-  {keyCombination: 'L', command: 'cmd_scrollScreenBottom'},
+  {keyCombination: 'Fi:', command: 'cmd_activateNewTab'},
   */
 ];
 
@@ -101,7 +99,7 @@ function runAction(action) {
   resetHistory();
 }
 
-document.addEventListener("keypress", event => {
+document.addEventListener("keyup", event => {
   //Check if a number key is pressed (for repetition)
   if (numbers.includes(event.key)) {
     repetition += event.key;

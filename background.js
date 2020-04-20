@@ -1,14 +1,4 @@
 /**
- * Math modulo. Always returns a positive result
- * @param {number} number 
- * @param {number} modulosOf 
- * @returns {number}
- */
-function positiveModulo(number, modulosOf) {
-  return Math.abs(number % modulosOf);
-}
-
-/**
  * Handles tab navigation.
  * @param {object} currentTab The tab (content-script) which ran the action. 
  * {@link https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/tabs/Tab|tabs.Tab} object. 
@@ -21,7 +11,6 @@ async function activateTab(currentTab, commandRepetition, direction) {
     const tabs = await browser.tabs.query({ windowId, hidden: false });
     const tabCount = tabs.length;
     let tabIndex = null;
-
     switch (direction) {
       case "next":
       //If no repetition, then we just want to navigate to the next tab
@@ -39,7 +28,9 @@ async function activateTab(currentTab, commandRepetition, direction) {
       break;
 
       case "prev":
-      tabIndex = positiveModulo(index - +commandRepetition, tabCount);
+        tabIndex = index - 1;
+        if (tabIndex < 0) 
+                tabIndex = tabCount - 1;
       break;
 
       default:
