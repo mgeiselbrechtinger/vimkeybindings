@@ -14,6 +14,7 @@
 * gT    : go to the previous tab
 * {n}gt : go to the n-th tab
 * :Fi   : open new tab at position n+1
+* u     : (undo) go back one page
 
 Commands can be repeated as in vim. Example: 50j will scroll down 50 lines.
 Also inputs can be aborted using the escape key (or any other non-command key).
@@ -27,5 +28,7 @@ Also inputs can be aborted using the escape key (or any other non-command key).
 * Rewritten from scratch with the WebExtensions API for Firefox 53 and after (and a few before) by Dietrich Ayala (https://github.com/autonome/vimkeybindings)
 * Adopted by me
 
-## TODO event listener doesn't work on blank tabs
+## Issues
+
+* Event listener won't work on blank tab or pdf-viewer
 

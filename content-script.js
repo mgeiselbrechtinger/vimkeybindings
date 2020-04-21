@@ -4,6 +4,7 @@ const SCROLL_LINE_COUNT = 1;
 const SCROLL_HORIZONTAL_PIXELS = 5;
 
 const actions = [
+  { keyCombination: 'u', command: 'cmd_goBackPage' },
   { keyCombination: 'h', command: 'cmd_scrollLeft' },
   { keyCombination: 'j', command: 'cmd_scrollLineDown' },
   { keyCombination: 'k', command: 'cmd_scrollLineUp' },
@@ -41,6 +42,11 @@ const commands = {
   },
   cmd_scrollFileTop: function() {
     window.scrollTo(window.scrollX, 0);
+  },
+  cmd_goBackPage: function(repetition) {
+    const repeat = repetition == "" ? -1 : -repetition;
+
+    window.history.go(repeat);
   },
   cmd_activateNextTab: function (repetition) {
     browser.runtime.sendMessage({
