@@ -3,7 +3,7 @@
   "name": "vim_keybindings",
   "description": "Vim directional keybindings for Firefox.",
   "author": "Max Geiselbrechtinger",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "applications": {
     "gecko": {
       "id": "firefox_vim_keybindings@maxgeiselbrechtinger"

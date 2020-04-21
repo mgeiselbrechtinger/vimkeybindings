@@ -13,7 +13,8 @@ const actions = [
   { keyCombination: 'gg', command: 'cmd_scrollFileTop' },
   { keyCombination: 'gt', command: 'cmd_activateNextTab' },
   { keyCombination: 'gT', command: 'cmd_activatePreviousTab' },
-  { keyCombination: ':Fi', command: 'cmd_activateNewTab'}
+  { keyCombination: ':Fi', command: 'cmd_activateNewTab'},
+  { keyCombination: ':q', command: 'cmd_closeCurrentTab'}
 ];
 
 const commands = {
@@ -68,6 +69,13 @@ const commands = {
     browser.runtime.sendMessage({
       message: {
         command: 'activateNewTab',
+      }
+    });
+  },
+  cmd_closeCurrentTab: function() {
+    browser.runtime.sendMessage({
+      message: {
+        command: 'closeCurrentTab',
       }
     });
   }
